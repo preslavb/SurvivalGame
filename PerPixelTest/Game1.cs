@@ -1,15 +1,8 @@
 ﻿namespace PerPixelTest
 {
-    using System;
-    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using Microsoft.Xna.Framework.Input;
-    using PerPixelTest.Camera;
-    using PerPixelTest.Characters;
-    using PerPixelTest.Sprites;
     using PerPixelTest.Managers;
-    using PerPixelTest.Interfaces;
     using PerPixelTest.Managers.GameStates;
 
     public class Game1 : Game
