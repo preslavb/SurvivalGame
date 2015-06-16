@@ -16,7 +16,7 @@
         private const float FRICTION_FORCE = 0.8f;
         private const float MAX_PLAYER_SPEED = 8;
 
-        private float jumpVelocity;
+        private float jumpVelocityTest;
 
         public Player()
         {
@@ -55,7 +55,7 @@
             this.FacingRight = true;
             this.PlayerAnimation.SpritesPosition = new Rectangle(0, 135, 950, 135);
             this.PlayerAnimation.Initialize(this.Position, new Vector2(10, 1));
-            this.jumpVelocity = 0.0f;
+            this.jumpVelocityTest = 0.0f;
         }
 
         public void LoadContent(ContentManager content)
@@ -112,14 +112,14 @@
                 {
                     this.Position = new Vector2(this.Position.X, this.Position.Y-1);
                     this.Jumped = true;
-                    this.jumpVelocity = DEFAULT_JUMP_INIT_VELOCITY;
+                    this.jumpVelocityTest = DEFAULT_JUMP_INIT_VELOCITY;
                 }
             }
 
             if (this.Falling)
             {
-                this.Acceleration = new Vector2(this.Acceleration.X, this.jumpVelocity);
-                this.jumpVelocity += GRAVITY;
+                this.Acceleration = new Vector2(this.Acceleration.X, this.jumpVelocityTest);
+                this.jumpVelocityTest += GRAVITY;
                 this.PlayerAnimation.SpritesPositionY = 0;
                 this.PlayerAnimation.AmountOfFramesX = 10;
                 this.PlayerAnimation.ApplyChanges();
