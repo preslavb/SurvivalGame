@@ -6,6 +6,7 @@
     using PerPixelTest.Interfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Input;
 
     public class SplashScreen : IGameState
     {
@@ -45,12 +46,18 @@
             throw new NotImplementedException();
         }
 
-        public void Update(GraphicsDeviceManager graphics, GameTime gameTime)
+        public void Update(ContentManager Content, GraphicsDeviceManager graphics, GameTime gameTime)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < InputHandler.PressedKeys.Count; i++)
+            {
+                if ((InputHandler.PressedKeys[i] == Keys.P && InputHandler.PressedKeysStates[i] == InputHandler.KeyState.Clicked) && GameStateHandler.currentGameState is SplashScreen)
+                {
+                    GameStateHandler.currentGameState = new Gameplay();
+                }
+            }
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
+        public void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
         {
             spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, null);
             spriteBatch.End();

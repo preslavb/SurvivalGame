@@ -9,7 +9,7 @@
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        public SpriteFont font;
+        
 
         public Game1()
         {
@@ -35,11 +35,13 @@
         {
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            Debuger.LoadContent(Content, graphics);
+
             GameStateHandler.currentGameState.LoadContent(Content, this.graphics);
 
             InputHandler.LoadContent();
 
-            font = Content.Load<SpriteFont>("DebugFont");
+            
         }
 
         protected override void UnloadContent()
@@ -51,7 +53,7 @@
         {
             InputHandler.Update();
 
-            GameStateHandler.currentGameState.Update(this.graphics, gameTime);
+            GameStateHandler.currentGameState.Update(Content, graphics, gameTime);
 
             base.Update(gameTime);
         }
@@ -60,7 +62,7 @@
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            GameStateHandler.currentGameState.Draw(gameTime, this.spriteBatch, this.graphics);
+            GameStateHandler.currentGameState.Draw(spriteBatch, graphics);
 
             
 

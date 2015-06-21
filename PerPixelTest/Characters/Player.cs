@@ -8,7 +8,7 @@
     using PerPixelTest.Managers;
     using PerPixelTest.Sprites.Animation;
 
-    public class Player
+    public class Player : GameObject
     {
         private const float DEFAULT_JUMP_INIT_VELOCITY = -25;
         private const float TIME_IN_AIR = 0;
@@ -25,11 +25,7 @@
 
         public Texture2D SpriteSheet { get; set; }
 
-        public Texture2D Texture { get; set; }
-
         public Animation PlayerAnimation { get; set; }
-
-        public Vector2 Position { get; set; }
 
         public Vector2 Acceleration { get; set; }
 
@@ -134,7 +130,7 @@
             this.Move(this.Acceleration);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
         {
             this.PlayerAnimation.Draw(spriteBatch, this.FacingRight);
         }

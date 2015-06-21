@@ -4,41 +4,26 @@
     using Microsoft.Xna.Framework.Graphics;
     using PerPixelTest.Interfaces;
 
-    public class Sprite
+    public class Sprite : GameObject
     {
-        private Texture2D texture;
-        private Vector2 position;
         private Color[] collisionData;
-        private Rectangle collisionRect;
 
         public Sprite(Texture2D newTexture) 
         {
-            this.SpriteSheet = newTexture;
+            this.Texture = newTexture;
             this.Position = new Vector2(0, 0);
-            this.Data = new Color[this.SpriteSheet.Width * this.SpriteSheet.Height];
+            this.Data = new Color[this.Texture.Width * this.Texture.Height];
             newTexture.GetData(this.Data);
-            this.Rect = new Rectangle((int)this.Position.X, (int)this.Position.Y, this.SpriteSheet.Width, this.SpriteSheet.Height);
+            this.CollisionRect = new Rectangle((int)this.Position.X, (int)this.Position.Y, this.Texture.Width, this.Texture.Height);
         }
 
         public Sprite(Texture2D newTexture, Vector2 newPosition)
         {
-            this.SpriteSheet = newTexture;
+            this.Texture = newTexture;
             this.Position = newPosition;
-            this.Data = new Color[this.SpriteSheet.Width * this.SpriteSheet.Height];
-            this.SpriteSheet.GetData(this.Data);
-            this.Rect = new Rectangle((int)this.Position.X, (int)this.Position.Y, this.SpriteSheet.Width, this.SpriteSheet.Height);
-        }
-
-        public Vector2 Position
-        {
-            get { return this.position; }
-            set { this.position = value; }
-        }
-
-        public Texture2D SpriteSheet
-        {
-            get { return this.texture; }
-            set { this.texture = value; }
+            this.Data = new Color[this.Texture.Width * this.Texture.Height];
+            this.Texture.GetData(this.Data);
+            this.CollisionRect = new Rectangle((int)this.Position.X, (int)this.Position.Y, this.Texture.Width, this.Texture.Height);
         }
 
         public Color[] Data
@@ -47,35 +32,11 @@
             set { this.collisionData = value; }
         }
 
-        public Rectangle Rect
-        {
-            get 
-            { 
-                return this.collisionRect; 
-            }
-
-            set 
-            {
-                this.collisionRect = value; 
-            }
-        }
-        public bool[] ActiveOctants
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-                throw new System.NotImplementedException();
-            }
-        }
-
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (this.SpriteSheet != null)
+            if (this.Texture != null)
             {
-                spriteBatch.Draw(this.SpriteSheet, this.Position, Color.White);
+                spriteBatch.Draw(this.Texture, this.Position, Color.White);
             }
         }
     }

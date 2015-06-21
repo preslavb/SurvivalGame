@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PerPixelTest.Camera.Camera2D" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCAAAEAAAIAAAIAAEACAAJAAACCEAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Camera\Camera2D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerPixelTest.Characters.Player" Collapsed="true">
+    <Position X="11" Y="1.25" Width="1.5" />
+    <InheritanceLine Type="PerPixelTest.Interfaces.GameObject" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.438" Y="2.184" />
+        <Point X="5.438" Y="2.316" />
+        <Point X="11.75" Y="2.316" />
+        <Point X="11.75" Y="1.941" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>CAQAAAIACIgAAwAAAAoIAEAAACIAABAAAACEIQAAAAQ=</HashCode>
+      <FileName>Characters\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerPixelTest.Interfaces.GameObject">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <InheritanceLine Type="PerPixelTest.Managers.Collider" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="0.5" />
+        <Point X="7.5" Y="0.26" />
+        <Point X="5.25" Y="0.26" />
+        <Point X="5.25" Y="0.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\GameObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Right" Position="0.943" />
+  </Class>
+  <Class Name="PerPixelTest.Managers.Collider" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Managers\Collider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerPixelTest.Managers.Debuger" Collapsed="true">
+    <Position X="3" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAEAAQ=</HashCode>
+      <FileName>Managers\Debuger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerPixelTest.Managers.GameStateHandler" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\GameStateHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerPixelTest.Managers.InputHandler" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAMIiAAIAAwEAAAABAUAAAAAAATCAAgAgAAAQCAQ=</HashCode>
+      <FileName>Managers\InputHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerPixelTest.Managers.GameStates.Gameplay" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="4" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAEAAwQAAAAAAAAAAAIAAAAABAAAAAAAIQQ=</HashCode>
+      <FileName>Managers\GameStates\Gameplay.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PerPixelTest.Managers.GameStates.SplashScreen" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAwBAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Managers\GameStates\SplashScreen.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PerPixelTest.Game1">
+    <Position X="1.25" Y="3" Width="1.5" />
+    <Members>
+      <Method Name="Game1" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAQAEEAAAAAAAwAAAAAAAAAAAAAAAAgAAAAAAAAAAAQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerPixelTest.Program" Collapsed="true">
+    <Position X="1.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerPixelTest.Sprites.Animation.Animation" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgSCAAAAgiAAAwIiAAAAgADGAGAAAAAgKgAAIAAAhgA=</HashCode>
+      <FileName>Sprites\Animation\Animation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerPixelTest.Sprites.Layer" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAgAAAgAIAAAACAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Sprites\Layer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerPixelTest.Sprites.Sprite" Collapsed="true">
+    <Position X="12.75" Y="1.25" Width="1.5" />
+    <InheritanceLine Type="PerPixelTest.Interfaces.GameObject" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.438" Y="2.184" />
+        <Point X="5.438" Y="2.316" />
+        <Point X="13.5" Y="2.316" />
+        <Point X="13.5" Y="1.941" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAgAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sprites\Sprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerPixelTest.Levels.Level" Collapsed="true">
+    <Position X="7.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQEAAAAAEAAwAAAAAAEAABAAAAAAEBAAAAAAAAAAQ=</HashCode>
+      <FileName>Levels\Level.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerPixelTest.Levels.Camp" Collapsed="true">
+    <Position X="9.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Levels\Camp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="PerPixelTest.Interfaces.IGameState" Collapsed="true">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Interfaces\IGameState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PerPixelTest.Interfaces.IRenderable" Collapsed="true">
+    <Position X="3" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IRenderable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

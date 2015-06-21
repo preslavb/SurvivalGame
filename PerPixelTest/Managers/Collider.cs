@@ -2,18 +2,9 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    class Collider
+    public class Collider
     {
-        private Rectangle rect;
-
         public Texture2D Texture { get; set; }
-        public Rectangle Rect
-        {
-            get
-            {
-                return rect;
-            }
-            
-        }
+        public Rectangle CollisionRect { get; set; }
     }
 }
