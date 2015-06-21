@@ -142,15 +142,15 @@
       <FileName>Levels\Camp.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="PerPixelTest.Interfaces.IGameState" Collapsed="true">
-    <Position X="3" Y="3" Width="1.5" />
+  <Interface Name="PerPixelTest.Interfaces.IGameState">
+    <Position X="3" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAEAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Interfaces\IGameState.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="PerPixelTest.Interfaces.IRenderable" Collapsed="true">
-    <Position X="3" Y="4" Width="1.5" />
+    <Position X="3" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IRenderable.cs</FileName>
