@@ -1,33 +1,87 @@
 ﻿namespace PerPixelTest.Levels
 {
+    using System;
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
     using PerPixelTest.Characters;
     using PerPixelTest.Interfaces;
     using PerPixelTest.Sprites;
-    using System;
-    using System.Collections.Generic;
+
     public class Level
     {
-        protected List<Layer> backgroundLayers;
-        protected List<Layer> foregroundLayers;
+        private List<Layer> backgroundLayers;
+        private List<Layer> foregroundLayers;
 
-        protected Player player;
+        private Player player;
 
-        protected Sprite ground;
+        private Sprite ground;
 
         public List<GameObject> Objects { get; set; }
 
         public bool Initialized { get; set; }
+
         public bool Loaded { get; set; }
+
+        protected List<Layer> BackgroundLayers 
+        {
+            get
+            {
+                return this.backgroundLayers;
+            }
+
+            set
+            {
+                this.backgroundLayers = value;
+            }
+        }
+
+        protected List<Layer> ForegroundLayers
+        {
+            get
+            {
+                return this.foregroundLayers;
+            }
+
+            set
+            {
+                this.foregroundLayers = value;
+            }
+        }
+
+        protected Player PlayerInLevel
+        {
+            get
+            {
+                return this.player;
+            }
+
+            set
+            {
+                this.player = value;
+            }
+        }
+
+        protected Sprite Ground
+        {
+            get
+            {
+                return this.ground;
+            }
+
+            set
+            {
+                this.ground = value;
+            }
+        }
 
         public virtual void Initialize(GraphicsDeviceManager graphics)
         {
             throw new NotImplementedException("Each unique level needs to have it's own override of Initialize() method");
         }
 
-        public virtual void LoadContent(ContentManager Content, GraphicsDeviceManager graphics)
+        public virtual void LoadContent(ContentManager content, GraphicsDeviceManager graphics)
         {
             throw new NotImplementedException("Each unique level needs to have it's own override of LoadContent() method");
         }

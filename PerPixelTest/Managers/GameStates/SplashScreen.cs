@@ -1,44 +1,25 @@
 ﻿namespace PerPixelTest.Managers.GameStates
 {
     using System;
-    using System.Collections.Generic;
-    using Microsoft.Xna.Framework.Graphics;
-    using PerPixelTest.Interfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
+    using PerPixelTest.Interfaces;
 
     public class SplashScreen : IGameState
     {
-        public bool Initialized
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+        private Texture2D splashTexture;
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public List<Texture2D> Textures
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public bool Initialized { get; set; }
 
         public void Initialize(GraphicsDeviceManager graphics)
         {
-            throw new NotImplementedException();
         }
 
-        public void LoadContent(ContentManager Content, GraphicsDeviceManager graphics)
+        public void LoadContent(ContentManager content, GraphicsDeviceManager graphics)
         {
-            throw new NotImplementedException();
+            this.splashTexture = content.Load<Texture2D>("placeholder");
         }
 
         public void UnloadContent()
@@ -46,13 +27,13 @@
             throw new NotImplementedException();
         }
 
-        public void Update(ContentManager Content, GraphicsDeviceManager graphics, GameTime gameTime)
+        public void Update(ContentManager content, GraphicsDeviceManager graphics, GameTime gameTime)
         {
             for (int i = 0; i < InputHandler.PressedKeys.Count; i++)
             {
-                if ((InputHandler.PressedKeys[i] == Keys.P && InputHandler.PressedKeysStates[i] == InputHandler.KeyState.Clicked) && GameStateHandler.currentGameState is SplashScreen)
+                if ((InputHandler.PressedKeys[i] == Keys.P && InputHandler.PressedKeysStates[i] == InputHandler.KeyState.Clicked) && GameStateHandler.CurrentGameState is SplashScreen)
                 {
-                    GameStateHandler.currentGameState = new Gameplay();
+                    GameStateHandler.CurrentGameState = new Gameplay();
                 }
             }
         }

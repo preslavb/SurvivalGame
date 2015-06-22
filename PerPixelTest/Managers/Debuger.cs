@@ -9,12 +9,12 @@
         private static Texture2D pixel;
         private static SpriteFont font;
 
-        public static void LoadContent(ContentManager Content, GraphicsDeviceManager graphics)
+        public static void LoadContent(ContentManager content, GraphicsDeviceManager graphics)
         {
             pixel = new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             pixel.SetData(new[] { Color.White });
 
-            font = Content.Load<SpriteFont>("DebugFont");
+            font = content.Load<SpriteFont>("DebugFont");
         }
 
         public static void Print(object debugObject)

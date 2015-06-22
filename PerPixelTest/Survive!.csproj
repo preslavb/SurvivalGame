@@ -54,7 +54,7 @@
     <Compile Include="Interfaces\IGameState.cs" />
     <Compile Include="Sprites\Animation\Animation.cs" />
     <Compile Include="Camera\Camera2D.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="EntryPoint.cs" />
     <Compile Include="Sprites\Layer.cs" />
     <Compile Include="Characters\Player.cs" />
     <Compile Include="Program.cs" />

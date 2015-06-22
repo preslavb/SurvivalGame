@@ -4,6 +4,19 @@
 
     public static class GameStateHandler
     {
-        internal static IGameState currentGameState;
+        private static IGameState currentGameState;
+
+        public static IGameState CurrentGameState
+        {
+            get
+            {
+                return currentGameState;
+            }
+
+            set
+            {
+                currentGameState = value;
+            }
+        }
     }
 }

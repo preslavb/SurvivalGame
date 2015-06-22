@@ -36,7 +36,7 @@
       <HashCode>AAAAAAAAAAAAAgAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\GameObject.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Orientation="Right" Position="0.943" />
+    <Lollipop Orientation="Right" Position="0.797" />
   </Class>
   <Class Name="PerPixelTest.Managers.Collider" Collapsed="true">
     <Position X="6.75" Y="0.5" Width="1.5" />
@@ -77,19 +77,19 @@
   <Class Name="PerPixelTest.Managers.GameStates.SplashScreen" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="4.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAEAAAAAAAAwBAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAQAEAAAAAAAAwAAAQAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Managers\GameStates\SplashScreen.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="PerPixelTest.Game1">
+  <Class Name="PerPixelTest.EntryPoint">
     <Position X="1.25" Y="3" Width="1.5" />
     <Members>
-      <Method Name="Game1" Hidden="true" />
+      <Method Name="EntryPoint" Hidden="true" />
     </Members>
     <TypeIdentifier>
       <HashCode>AAQAEEAAAAAAAwAAAAAAAAAAAAAAAAgAAAAAAAAAAAQ=</HashCode>
-      <FileName>Game1.cs</FileName>
+      <FileName>EntryPoint.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PerPixelTest.Program" Collapsed="true">
@@ -135,7 +135,7 @@
       <FileName>Levels\Level.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PerPixelTest.Levels.Camp" Collapsed="true">
+  <Class Name="PerPixelTest.Levels.Camp">
     <Position X="9.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAgAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>

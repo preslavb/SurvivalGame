@@ -10,9 +10,9 @@
 
     public class Player : GameObject
     {
+        private const float GRAVITY = 1.1f;
         private const float DEFAULT_JUMP_INIT_VELOCITY = -25;
         private const float TIME_IN_AIR = 0;
-        public const float GRAVITY = 1.1f;
         private const float FRICTION_FORCE = 0.8f;
         private const float MAX_PLAYER_SPEED = 8;
 
@@ -40,8 +40,6 @@
         public bool RightRestricted { get; set; }
 
         public bool FacingRight { get; set; }
-
-        //public bool[] ActiveOctants { get; set; }
 
         public Rectangle Rect { get; set; }
 
@@ -72,7 +70,7 @@
             {
                 if (this.Acceleration.X > -MAX_PLAYER_SPEED)
                 {
-                    this.Acceleration = new Vector2(Acceleration.X - 1, Acceleration.Y);
+                    this.Acceleration = new Vector2(this.Acceleration.X - 1, this.Acceleration.Y);
                 }
 
                 this.FacingRight = false;
@@ -81,7 +79,7 @@
             {
                 if (this.Acceleration.X < MAX_PLAYER_SPEED)
                 {
-                    this.Acceleration = new Vector2(Acceleration.X + 1, Acceleration.Y);
+                    this.Acceleration = new Vector2(this.Acceleration.X + 1, this.Acceleration.Y);
                 }
 
                 this.FacingRight = true;
@@ -90,15 +88,15 @@
             {
                 if (this.Acceleration.X > FRICTION_FORCE)
                 {
-                    this.Acceleration = new Vector2(Acceleration.X - FRICTION_FORCE, Acceleration.Y);
+                    this.Acceleration = new Vector2(this.Acceleration.X - FRICTION_FORCE, this.Acceleration.Y);
                 }
                 else if (this.Acceleration.X < -FRICTION_FORCE)
                 {
-                    this.Acceleration = new Vector2(Acceleration.X + FRICTION_FORCE, Acceleration.Y);
+                    this.Acceleration = new Vector2(this.Acceleration.X + FRICTION_FORCE, this.Acceleration.Y);
                 }
                 else
                 {
-                    this.Acceleration = new Vector2(0 , Acceleration.Y);
+                    this.Acceleration = new Vector2(0, this.Acceleration.Y);
                 }
             }
 
@@ -106,7 +104,7 @@
             {
                 if (InputHandler.PressedKeys[i] == Keys.Space && InputHandler.PressedKeysStates[i] == InputHandler.KeyState.Clicked)
                 {
-                    this.Position = new Vector2(this.Position.X, this.Position.Y-1);
+                    this.Position = new Vector2(this.Position.X, this.Position.Y - 1);
                     this.Jumped = true;
                     this.jumpVelocity = DEFAULT_JUMP_INIT_VELOCITY;
                 }

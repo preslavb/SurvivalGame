@@ -1,5 +1,6 @@
 ﻿namespace PerPixelTest.Levels
 {
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
@@ -8,93 +9,103 @@
     using PerPixelTest.Characters;
     using PerPixelTest.Interfaces;
     using PerPixelTest.Sprites;
-    using System.Collections.Generic;
-    class Camp : Level
+
+    public class Camp : Level
     {
         private Camera2D camera;
 
+        /// <summary>
+        /// Constructor, not used for anything yet
+        /// </summary>
         public Camp()
         {
-
         }
+
+        /// <summary>
+        /// Initialize the Level (Camp)
+        /// </summary>
         public override void Initialize(GraphicsDeviceManager graphics)
         {
             this.camera = new Camera2D(graphics.GraphicsDevice.Viewport);
-            this.player = new Player();
+            this.PlayerInLevel = new Player();
             this.Objects = new List<GameObject>();
 
-            this.player.Initialize();
+            this.PlayerInLevel.Initialize();
 
-            this.player.LeftRestricted = false;
-            this.player.RightRestricted = false;
+            this.PlayerInLevel.LeftRestricted = false;
+            this.PlayerInLevel.RightRestricted = false;
 
-            this.player.Acceleration = new Vector2(0.0f, 0.0f);
+            this.PlayerInLevel.Acceleration = new Vector2(0.0f, 0.0f);
 
             this.Initialized = true;
         }
 
-        public override void LoadContent(ContentManager Content, GraphicsDeviceManager graphics)
+        /// <summary>
+        /// Load Content for the Level (Camp)
+        /// </summary>
+        public override void LoadContent(ContentManager content, GraphicsDeviceManager graphics)
         {
-            this.backgroundLayers = new List<Layer>()
+            this.BackgroundLayers = new List<Layer>()
             {
                 new Layer(this.camera) { Parallax = new Vector2(0.2f, 1.0f) },
                 new Layer(this.camera) { Parallax = new Vector2(0.4f, 1.0f) },
             };
 
-            this.foregroundLayers = new List<Layer>()
+            this.ForegroundLayers = new List<Layer>()
             {
                 new Layer(this.camera) { Parallax = new Vector2(1.5f, 1.0f) }
             };
 
             // Draw And Position Background
-            this.backgroundLayers[0].Sprites.Add(new Sprite(Content.Load<Texture2D>("sky")));
-            this.backgroundLayers[1].Sprites.Add(new Sprite(Content.Load<Texture2D>("mountain")));
+            this.BackgroundLayers[0].Sprites.Add(new Sprite(content.Load<Texture2D>("sky")));
+            this.BackgroundLayers[1].Sprites.Add(new Sprite(content.Load<Texture2D>("mountain")));
 
-            this.backgroundLayers[0].Sprites[0].Position = this.backgroundLayers[0].ScreenToWorld(new Vector2(graphics.GraphicsDevice.Viewport.X, graphics.GraphicsDevice.Viewport.Y));
-            this.backgroundLayers[1].Sprites[0].Position = this.backgroundLayers[1].ScreenToWorld(new Vector2(graphics.GraphicsDevice.Viewport.X, graphics.GraphicsDevice.Viewport.Y - 200));
+            this.BackgroundLayers[0].Sprites[0].Position = this.BackgroundLayers[0].ScreenToWorld(new Vector2(graphics.GraphicsDevice.Viewport.X, graphics.GraphicsDevice.Viewport.Y));
+            this.BackgroundLayers[1].Sprites[0].Position = this.BackgroundLayers[1].ScreenToWorld(new Vector2(graphics.GraphicsDevice.Viewport.X, graphics.GraphicsDevice.Viewport.Y - 200));
 
             // Draw And Position Foreground
-            this.foregroundLayers[0].Sprites.Add(new Sprite(Content.Load<Texture2D>("floorSprite")));
+            this.ForegroundLayers[0].Sprites.Add(new Sprite(content.Load<Texture2D>("floorSprite")));
 
-            this.foregroundLayers[0].Sprites[0].Position = this.foregroundLayers[0].ScreenToWorld(new Vector2(graphics.GraphicsDevice.Viewport.X, graphics.GraphicsDevice.Viewport.Y + 700));
+            this.ForegroundLayers[0].Sprites[0].Position = this.ForegroundLayers[0].ScreenToWorld(new Vector2(graphics.GraphicsDevice.Viewport.X, graphics.GraphicsDevice.Viewport.Y + 700));
 
-            this.player.LoadContent(Content);
+            this.PlayerInLevel.LoadContent(content);
 
             // Load And Position Player Character
-            //this.player.Position = this.backgroundLayers[2].ScreenToWorld(new Vector2(-this.player.Rect.Height / 2, 0));
-            this.player.Position = new Vector2(-this.player.Rect.Height / 2, 0);
-            this.player.Data = new Color[this.player.SpriteSheet.Width * this.player.SpriteSheet.Height];
-            this.player.SpriteSheet.GetData(this.player.Data);
+            this.PlayerInLevel.Position = new Vector2(-this.PlayerInLevel.Rect.Height / 2, 0);
+            this.PlayerInLevel.Data = new Color[this.PlayerInLevel.SpriteSheet.Width * this.PlayerInLevel.SpriteSheet.Height];
+            this.PlayerInLevel.SpriteSheet.GetData(this.PlayerInLevel.Data);
 
             // Load And Position Ground Texture
-            this.ground = new Sprite(Content.Load<Texture2D>("floorSprite"));
-            //this.ground.Position = this.backgroundLayers[2].ScreenToWorld(new Vector2(0, 0)) + new Vector2(-this.ground.Texture.Width / 2, this.player.Position.Y + this.player.Rect.Height);
-            this.ground.Position = new Vector2(0, 0) + new Vector2(-this.ground.Texture.Width / 2, this.player.Position.Y + this.player.Rect.Height);
+            this.Ground = new Sprite(content.Load<Texture2D>("floorSprite"));
+            this.Ground.Position = new Vector2(0, 0) + new Vector2(-this.Ground.Texture.Width / 2, this.PlayerInLevel.Position.Y + this.PlayerInLevel.Rect.Height);
   
-            this.Objects.Add(this.ground);
-            this.Objects.Add(this.player);
+            this.Objects.Add(this.Ground);
+            this.Objects.Add(this.PlayerInLevel);
 
             this.Loaded = true;
         }
 
         public override void Update(GameTime gameTime)
         {
-            if (!((Keyboard.GetState().IsKeyDown(Keys.D) && !this.player.RightRestricted) || (Keyboard.GetState().IsKeyDown(Keys.A) && !this.player.LeftRestricted)))
+            if (!((Keyboard.GetState().IsKeyDown(Keys.D) && !this.PlayerInLevel.RightRestricted) || (Keyboard.GetState().IsKeyDown(Keys.A) && !this.PlayerInLevel.LeftRestricted)))
             {
-                this.player.PlayerAnimation.SpritesPositionY = 271;
-                this.player.PlayerAnimation.AmountOfFramesX = 5;
-                this.player.PlayerAnimation.ApplyChanges();
+                this.PlayerInLevel.PlayerAnimation.SpritesPositionY = 271;
+                this.PlayerInLevel.PlayerAnimation.AmountOfFramesX = 5;
+                this.PlayerInLevel.PlayerAnimation.ApplyChanges();
             }
 
             // Focus Camera on Player
-            this.camera.Focus(this.player.Position);
+            this.camera.Focus(this.PlayerInLevel.Position);
 
-            this.player.Update(gameTime);
+            this.PlayerInLevel.Update(gameTime);
         }
 
+        /// <summary>
+        /// Draw the Level (Camp)
+        /// </summary>
         public override void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
         {
-            foreach (Layer layer in this.backgroundLayers)
+            foreach (Layer layer in this.BackgroundLayers)
             {
                 layer.Draw(spriteBatch);
             }
@@ -106,17 +117,16 @@
                              null,
                              null,
                              null,
-                             this.camera.GetTransformation(graphics.GraphicsDevice)
-                             );
+                             this.camera.GetTransformation(graphics.GraphicsDevice));
 
-            foreach (GameObject gameObject in Objects)
+            foreach (GameObject gameObject in this.Objects)
             {
                 gameObject.Draw(spriteBatch, graphics);
             }
 
             spriteBatch.End();
 
-            foreach (Layer layer in this.foregroundLayers)
+            foreach (Layer layer in this.ForegroundLayers)
             {
                 layer.Draw(spriteBatch);
             }

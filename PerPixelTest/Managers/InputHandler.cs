@@ -1,7 +1,7 @@
 ﻿namespace PerPixelTest.Managers
 {
-    using Microsoft.Xna.Framework.Input;
     using System.Collections.Generic;
+    using Microsoft.Xna.Framework.Input;
 
     public static class InputHandler
     {
@@ -18,6 +18,14 @@
         private static MouseKeys pressedMouseKey;
         private static MouseKeyState pressedMouseKeyState;
 
+        public enum KeyState
+        {
+            Held,
+            Clicked,
+            Released,
+            None
+        }
+
         private enum MouseKeys
         {
             Left,
@@ -27,14 +35,6 @@
         }
 
         private enum MouseKeyState
-        {
-            Held,
-            Clicked,
-            Released,
-            None
-        }
-
-        public enum KeyState
         {
             Held,
             Clicked,
@@ -164,6 +164,7 @@
             PressedKeys = new List<Keys>();
             PressedKeysStates = new List<KeyState>();
         }
+
         public static void LoadContent()
         {
             currentMouseState = Mouse.GetState();
@@ -172,6 +173,7 @@
             currentKeyboardState = Keyboard.GetState();
             previousKeyboardState = currentKeyboardState;
         }
+
         public static void Update()
         {
             previousMouseState = currentMouseState;
@@ -183,11 +185,26 @@
             CheckKeyState(previousKeyboardState, currentKeyboardState);
         }
 
+        public static void CheckPauseKey(bool paused)
+        {
+            for (int i = 0; i < pressedKeys.Count; i++)
+            {
+                if (pressedKeys[i] == Keys.Escape && PressedKeysStates[i] == KeyState.Clicked)
+                {
+                    if (!paused)
+                    {
+                        paused = true;
+                    }
+                    else
+                    {
+                        paused = false;
+                    }
+                }
+            }
+        }
+
         private static void CheckKeyState(KeyboardState previousState, KeyboardState currentState)
         {
-            //pressedKeys.Clear();
-            //pressedKeysStates.Clear();
-            //
             for (int i = 0; i < currentState.GetPressedKeys().Length; i++)
             {
                 keyToCheck = currentState.GetPressedKeys()[i];
@@ -198,7 +215,6 @@
                 }
                 else if (previousState.IsKeyDown(keyToCheck) && currentState.IsKeyDown(keyToCheck))
                 {
-                    //pressedKeys.Add(keyToCheck);
                     pressedKeysStates[pressedKeys.IndexOf(keyToCheck)] = KeyState.Held;
                 }
             }
@@ -227,6 +243,7 @@
                 pressedKeys.RemoveAt(pressedKeys.IndexOf(Keys.None));
             }
         }
+
         private static void CheckButtonState(MouseState previousState, MouseState currentState)
         {
             if (previousState.LeftButton == ButtonState.Released && currentState.LeftButton == ButtonState.Pressed)
@@ -244,7 +261,6 @@
                 pressedMouseKey = MouseKeys.Left;
                 pressedMouseKeyState = MouseKeyState.Released;
             }
-
             else if (previousState.RightButton == ButtonState.Released && currentState.RightButton == ButtonState.Pressed)
             {
                 pressedMouseKey = MouseKeys.Right;
@@ -260,7 +276,6 @@
                 pressedMouseKey = MouseKeys.Right;
                 pressedMouseKeyState = MouseKeyState.Released;
             }
-
             else if (previousState.MiddleButton == ButtonState.Released && currentState.MiddleButton == ButtonState.Pressed)
             {
                 pressedMouseKey = MouseKeys.Middle;
@@ -276,7 +291,6 @@
                 pressedMouseKey = MouseKeys.Middle;
                 pressedMouseKeyState = MouseKeyState.Released;
             }
-
             else
             {
                 pressedMouseKey = MouseKeys.None;
