@@ -1,6 +1,7 @@
 ﻿namespace PerPixelTest
 {
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework.Graphics;
     using PerPixelTest.Managers;
     using PerPixelTest.Managers.GameStates;
@@ -17,6 +18,10 @@
             Globals.graphics.PreferredBackBufferHeight = 1080;
 
             this.Window.Title = "Survive!";
+
+            // SoundEffect test
+            SoundEffect test = Content.Load<SoundEffect>("GoT");
+            AudioManager.AddEffect("GoT", test);
         }
 
         protected override void Initialize()
@@ -26,6 +31,8 @@
             GameStateHandler.CurrentGameState.Initialize(Globals.graphics);
 
             InputHandler.Initialize();
+
+            AudioManager.Play("GoT");
 
             base.Initialize();
         }

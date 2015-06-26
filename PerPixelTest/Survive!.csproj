@@ -53,6 +53,7 @@
     <Compile Include="Managers\GameStates\SplashScreen.cs" />
     <Compile Include="Managers\InputHandler.cs" />
     <Compile Include="Interfaces\IGameState.cs" />
+    <Compile Include="Managers\AudioManager.cs" />
     <Compile Include="Sprites\Animation\Animation.cs" />
     <Compile Include="Camera\Camera2D.cs" />
     <Compile Include="EntryPoint.cs" />
@@ -78,6 +79,7 @@
     <Content Include="Content\floorSprite.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\GoT.mp3" />
     <Content Include="Content\mountain.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
