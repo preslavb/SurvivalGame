@@ -5,6 +5,6 @@
 
     public interface IRenderable
     {
-        void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics);
+        void Draw();
     }
 }

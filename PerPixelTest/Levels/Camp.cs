@@ -10,7 +10,7 @@
     using PerPixelTest.Interfaces;
     using PerPixelTest.Sprites;
 
-    public class Camp : Level
+    public class Camp : AbstractLevel
     {
         private Camera2D camera;
 
@@ -67,9 +67,13 @@
 
         public override void Update(GameTime gameTime)
         {
-            if (!((Keyboard.GetState().IsKeyDown(Keys.D)) || (Keyboard.GetState().IsKeyDown(Keys.A))))
+            if (Keyboard.GetState().IsKeyDown(Keys.D) || Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                this.PlayerInLevel.PlayerAnimation.CurrentAnimationState = PlayerInLevel.PlayerAnimation.AnimationActions["Running"];
+                
+            }
+            else
+            {
+                
             }
 
             // Focus Camera on Player
@@ -78,32 +82,32 @@
             this.PlayerInLevel.Update(gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
+        public override void Draw()
         {
             foreach (Layer layer in this.BackgroundLayers)
             {
-                layer.Draw(spriteBatch);
+                layer.Draw(Globals.spriteBatch);
             }
 
-            spriteBatch.Begin(
+            Globals.spriteBatch.Begin(
                              SpriteSortMode.BackToFront,
                              BlendState.AlphaBlend,
                              null,
                              null,
                              null,
                              null,
-                             this.camera.GetTransformation(graphics.GraphicsDevice));
+                             this.camera.GetTransformation(Globals.graphics.GraphicsDevice));
 
             foreach (GameObject gameObject in this.Objects)
             {
-                gameObject.Draw(spriteBatch, graphics);
+                gameObject.Draw();
             }
 
-            spriteBatch.End();
+            Globals.spriteBatch.End();
 
             foreach (Layer layer in this.ForegroundLayers)
             {
-                layer.Draw(spriteBatch);
+                layer.Draw(Globals.spriteBatch);
             }
         }
     }

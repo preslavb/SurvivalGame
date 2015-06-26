@@ -11,7 +11,7 @@
     {
         private bool paused;
 
-        private Level currentLevel;
+        private AbstractLevel currentLevel;
 
         public bool Initialized { get; set; }
 
@@ -75,9 +75,9 @@
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
+        public void Draw()
         {
-            this.currentLevel.Draw(spriteBatch, graphics);
+            this.currentLevel.Draw();
         }
     }
 }

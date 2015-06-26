@@ -45,7 +45,7 @@
     <Compile Include="Interfaces\GameObject.cs" />
     <Compile Include="Interfaces\IRenderable.cs" />
     <Compile Include="Levels\Camp.cs" />
-    <Compile Include="Levels\Level.cs" />
+    <Compile Include="Levels\AbstractLevel.cs" />
     <Compile Include="Managers\Collider.cs" />
     <Compile Include="Managers\Debuger.cs" />
     <Compile Include="Managers\GameStateHandler.cs" />

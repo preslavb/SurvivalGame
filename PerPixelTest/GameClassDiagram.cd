@@ -18,7 +18,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>CAQAAAIACIgAAwAAAAoIAEAAACIAABAAAACEIQAAAAQ=</HashCode>
+      <HashCode>AAQAAAAAAIgAAgAAAAAIAAAAACAAAAAAAgAEIAAAAAQ=</HashCode>
       <FileName>Characters\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -88,7 +88,7 @@
       <Method Name="EntryPoint" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAQAEEAAAAAAAwAAAAAAAAAAAAAAAAgAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAQAEAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>EntryPoint.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -102,7 +102,7 @@
   <Class Name="PerPixelTest.Sprites.Animation.Animation" Collapsed="true">
     <Position X="12.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BgSCAAAAgiAAAwIiAAAAgADGAGAAAAAgKgAAIAAAhgA=</HashCode>
+      <HashCode>AAQAAAEAAAAAAgAAAAAAAEABAAAABgQgIAAAJAAAAAA=</HashCode>
       <FileName>Sprites\Animation\Animation.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -128,11 +128,11 @@
       <FileName>Sprites\Sprite.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PerPixelTest.Levels.Level" Collapsed="true">
+  <Class Name="PerPixelTest.Levels.AbstractLevel" Collapsed="true">
     <Position X="7.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQQEAAAAAEAAwAAAAEBEAABAAAQAAEBAAAAAAAAEAQ=</HashCode>
-      <FileName>Levels\Level.cs</FileName>
+      <FileName>Levels\AbstractLevel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PerPixelTest.Levels.Camp">

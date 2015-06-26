@@ -38,10 +38,10 @@
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
+        public void Draw()
         {
-            spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, null);
-            spriteBatch.End();
+            Globals.spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, null);
+            Globals.spriteBatch.End();
         }
     }
 }

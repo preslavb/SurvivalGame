@@ -9,9 +9,9 @@
     {
         public Vector2 Position { get; set; }
 
-        public virtual void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
+        public virtual void Draw()
         {
-            spriteBatch.Draw(this.Texture, this.Position, Color.White);
+            Globals.spriteBatch.Draw(this.Texture, this.Position, Color.White);
         }
     }
 }

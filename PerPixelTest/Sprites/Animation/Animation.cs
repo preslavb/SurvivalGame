@@ -6,13 +6,35 @@
 
     public class Animation
     {
+        private AnimationState currentAnimationState;
         public bool Active { get; set; }
 
         public Texture2D SpriteSheet { get; set; }
 
-        public Dictionary< string, AnimationState> AnimationActions { get; set; }
+        public Dictionary<string, AnimationState> AnimationActions { get; set; }
 
-        public AnimationState CurrentAnimationState { get; set; }
+        public AnimationState CurrentAnimationState
+        {
+            get
+            {
+                return currentAnimationState;
+            }
+            set
+            {
+                if (currentAnimationState != null)
+                {
+                    if (!currentAnimationState.Equals(value))
+                    {
+                        this.CurrentFramePosition = new Vector2(0, this.CurrentFramePosition.Y);
+                        this.currentAnimationState = value;
+                    }
+                }
+                else
+                {
+                    this.currentAnimationState = value;
+                }
+            }
+        }
 
         public Vector2 CurrentFramePosition { get; set; }
 
@@ -29,7 +51,6 @@
         public Animation(Texture2D spriteSheet, Vector2 objectPosition)
         {
             this.Active = false;
-            this.SwitchFrameTimer = 60;
             this.SpriteSheet = spriteSheet;
             AnimationActions = new Dictionary<string, AnimationState>();
         }
@@ -45,7 +66,7 @@
                 this.FramesElapsed = 0; 
             }
             
-            if (this.FramesElapsed >= this.SwitchFrameTimer)
+            if (this.FramesElapsed >= this.CurrentAnimationState.AnimationSpeed)
             {
                 this.FramesElapsed = 0;
 

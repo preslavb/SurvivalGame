@@ -16,16 +16,14 @@
 
         public Animation PlayerAnimation { get; set; }
 
-        public Vector2 Acceleration { get; set; }
+        private bool FacingRight { get; set; }
 
-        public bool FacingRight { get; set; }
+        public Vector2 Acceleration { get; set; }
 
         public Rectangle PlayerRectangle { get; set; }
 
         public Player()
         {
-            this.FacingRight = true;
-            
         }
 
         public void LoadContent()
@@ -40,27 +38,32 @@
             this.PlayerAnimation.AnimationPosition = this.Position;
 
             this.PlayerRectangle = new Rectangle((int)this.Position.X, (int)this.Position.Y, this.PlayerAnimation.SourceRectangle.Width, this.PlayerAnimation.SourceRectangle.Height);
-
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            if (Keyboard.GetState().IsKeyDown(Keys.A) || Keyboard.GetState().IsKeyDown(Keys.D))
             {
-                if (this.Acceleration.X > -MAX_PLAYER_SPEED)
+                this.PlayerAnimation.CurrentAnimationState = this.PlayerAnimation.AnimationActions["Walking"];
+                if (Keyboard.GetState().IsKeyDown(Keys.A))
                 {
-                    this.Acceleration = new Vector2(this.Acceleration.X - 1, this.Acceleration.Y);
-                }
+                    if (this.Acceleration.X > -MAX_PLAYER_SPEED)
+                    {
+                        this.Acceleration = new Vector2(this.Acceleration.X - 1, this.Acceleration.Y);
+                    }
 
-                this.FacingRight = false;
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.D))
-            {
-                if (this.Acceleration.X < MAX_PLAYER_SPEED)
+                    this.FacingRight = false;
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.D))
                 {
-                    this.Acceleration = new Vector2(this.Acceleration.X + 1, this.Acceleration.Y);
-                }
+                    if (this.Acceleration.X < MAX_PLAYER_SPEED)
+                    {
+                        this.Acceleration = new Vector2(this.Acceleration.X + 1, this.Acceleration.Y);
+                    }
 
-                this.FacingRight = true;
+                    this.FacingRight = true;
+                }
             }
             else
             {
+                this.PlayerAnimation.CurrentAnimationState = this.PlayerAnimation.AnimationActions["Dying"];
+
                 if (this.Acceleration.X > FRICTION_FORCE)
                 {
                     this.Acceleration = new Vector2(this.Acceleration.X - FRICTION_FORCE, this.Acceleration.Y);
@@ -78,9 +81,9 @@
             this.Move(this.Acceleration);
         }
 
-        public override void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
+        public override void Draw()
         {
-            this.PlayerAnimation.Draw(spriteBatch, this.FacingRight);
+            this.PlayerAnimation.Draw(Globals.spriteBatch, this.FacingRight);
         }
 
         public void Move(Vector2 value)

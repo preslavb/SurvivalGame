@@ -9,7 +9,7 @@
     using PerPixelTest.Interfaces;
     using PerPixelTest.Sprites;
 
-    public class Level
+    public class AbstractLevel
     {
         private List<Layer> backgroundLayers;
         private List<Layer> foregroundLayers;
@@ -91,7 +91,7 @@
             throw new NotImplementedException("Each unique level needs to have it's own override of Update() method");
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
+        public virtual void Draw()
         {
             throw new NotImplementedException("Each unique level needs to have it's own override of Draw() method");
         }

@@ -59,7 +59,7 @@
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            GameStateHandler.CurrentGameState.Draw(Globals.spriteBatch, Globals.graphics);
+            GameStateHandler.CurrentGameState.Draw();
 
             base.Draw(gameTime);
         }
