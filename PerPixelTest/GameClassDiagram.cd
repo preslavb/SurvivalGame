@@ -55,21 +55,21 @@
   <Class Name="PerPixelTest.Managers.GameStateHandler" Collapsed="true">
     <Position X="1.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Managers\GameStateHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PerPixelTest.Managers.InputHandler" Collapsed="true">
     <Position X="3" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAQAAMIiAAIAAwEAAAABAUAAAAAAATCAAgAgAAAQCAQ=</HashCode>
+      <HashCode>gAQAAMIiAAIAAwEAAAABAUAAAAAAATCAAgAhAAAQCAQ=</HashCode>
       <FileName>Managers\InputHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PerPixelTest.Managers.GameStates.Gameplay" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="4.75" Y="4" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAQAEAAAAAEAAwQAAAAAAAAAAAIAAAAABAAAAAAAIQQ=</HashCode>
+      <HashCode>AAQAEAAAAAEAAwAAAAAAAAAAAAAAAAAABAAAAAAAIAQ=</HashCode>
       <FileName>Managers\GameStates\Gameplay.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -131,7 +131,7 @@
   <Class Name="PerPixelTest.Levels.Level" Collapsed="true">
     <Position X="7.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQQEAAAAAEAAwAAAAAAEAABAAAAAAEBAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAQQEAAAAAEAAwAAAAEBEAABAAAQAAEBAAAAAAAAEAQ=</HashCode>
       <FileName>Levels\Level.cs</FileName>
     </TypeIdentifier>
   </Class>

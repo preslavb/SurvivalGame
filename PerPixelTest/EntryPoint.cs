@@ -6,17 +6,15 @@
     using PerPixelTest.Managers.GameStates;
 
     public class EntryPoint : Game
-    {
-        private GraphicsDeviceManager graphics;
-        private SpriteBatch spriteBatch;
-        
+    {        
         public EntryPoint()
         {
-            this.graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            Globals.content = this.Content;
+            Globals.graphics = new GraphicsDeviceManager(this);
+            Globals.content.RootDirectory = "Content";
 
-            this.graphics.PreferredBackBufferWidth = 1920;
-            this.graphics.PreferredBackBufferHeight = 1080;
+            Globals.graphics.PreferredBackBufferWidth = 1920;
+            Globals.graphics.PreferredBackBufferHeight = 1080;
 
             this.Window.Title = "Survive!";
         }
@@ -25,7 +23,7 @@
         {
             GameStateHandler.CurrentGameState = new Gameplay();
 
-            GameStateHandler.CurrentGameState.Initialize(this.graphics);
+            GameStateHandler.CurrentGameState.Initialize(Globals.graphics);
 
             InputHandler.Initialize();
 
@@ -34,11 +32,11 @@
 
         protected override void LoadContent()
         {
-            this.spriteBatch = new SpriteBatch(GraphicsDevice);
+            Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Debuger.LoadContent(this.Content, this.graphics);
+            Debuger.LoadContent(this.Content, Globals.graphics);
 
-            GameStateHandler.CurrentGameState.LoadContent(this.Content, this.graphics);
+            GameStateHandler.CurrentGameState.LoadContent(this.Content, Globals.graphics);
 
             InputHandler.LoadContent();
         }
@@ -52,7 +50,7 @@
         {
             InputHandler.Update();
 
-            GameStateHandler.CurrentGameState.Update(this.Content, this.graphics, gameTime);
+            GameStateHandler.CurrentGameState.Update(this.Content, Globals.graphics, gameTime);
 
             base.Update(gameTime);
         }
@@ -61,7 +59,7 @@
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            GameStateHandler.CurrentGameState.Draw(this.spriteBatch, this.graphics);
+            GameStateHandler.CurrentGameState.Draw(Globals.spriteBatch, Globals.graphics);
 
             base.Draw(gameTime);
         }

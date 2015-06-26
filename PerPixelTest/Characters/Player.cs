@@ -7,66 +7,41 @@
     using PerPixelTest.Interfaces;
     using PerPixelTest.Managers;
     using PerPixelTest.Sprites.Animation;
+    using System.Collections.Generic;
 
     public class Player : GameObject
     {
-        private const float GRAVITY = 1.1f;
-        private const float DEFAULT_JUMP_INIT_VELOCITY = -25;
-        private const float TIME_IN_AIR = 0;
         private const float FRICTION_FORCE = 0.8f;
         private const float MAX_PLAYER_SPEED = 8;
-
-        private float jumpVelocity;
-
-        public Player()
-        {
-            this.Falling = false;
-        }
-
-        public Texture2D SpriteSheet { get; set; }
 
         public Animation PlayerAnimation { get; set; }
 
         public Vector2 Acceleration { get; set; }
 
-        public Color[] Data { get; set; }
-
-        public bool Falling { get; set; }
-
-        public bool Jumped { get; set; }
-
-        public bool LeftRestricted { get; set; }
-
-        public bool RightRestricted { get; set; }
-
         public bool FacingRight { get; set; }
 
-        public Rectangle Rect { get; set; }
+        public Rectangle PlayerRectangle { get; set; }
 
-        public void Initialize()
+        public Player()
         {
-            this.PlayerAnimation = new Animation();
             this.FacingRight = true;
-            this.PlayerAnimation.SpritesPosition = new Rectangle(0, 135, 950, 135);
-            this.PlayerAnimation.Initialize(this.Position, new Vector2(10, 1));
-            this.jumpVelocity = 0.0f;
+            
         }
 
-        public void LoadContent(ContentManager content)
+        public void LoadContent()
         {
-            this.SpriteSheet = content.Load<Texture2D>("actions");
-            this.PlayerAnimation.AnimationImage = this.SpriteSheet;
+            AnimationFactory.CreatePlayerAnimations(this);
         }
 
         public void Update(GameTime gameTime)
         {
             this.PlayerAnimation.Active = true;
             this.PlayerAnimation.Update(gameTime);
-            this.PlayerAnimation.Position = this.Position;
+            this.PlayerAnimation.AnimationPosition = this.Position;
 
-            this.Rect = new Rectangle((int)this.Position.X, (int)this.Position.Y, this.PlayerAnimation.Source.Width, this.PlayerAnimation.Source.Height);
+            this.PlayerRectangle = new Rectangle((int)this.Position.X, (int)this.Position.Y, this.PlayerAnimation.SourceRectangle.Width, this.PlayerAnimation.SourceRectangle.Height);
 
-            if (Keyboard.GetState().IsKeyDown(Keys.A) && !this.LeftRestricted)
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
                 if (this.Acceleration.X > -MAX_PLAYER_SPEED)
                 {
@@ -75,7 +50,7 @@
 
                 this.FacingRight = false;
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.D) && !this.RightRestricted)
+            else if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
                 if (this.Acceleration.X < MAX_PLAYER_SPEED)
                 {
@@ -98,31 +73,6 @@
                 {
                     this.Acceleration = new Vector2(0, this.Acceleration.Y);
                 }
-            }
-
-            for (int i = 0; i < InputHandler.PressedKeys.Count; i++)
-            {
-                if (InputHandler.PressedKeys[i] == Keys.Space && InputHandler.PressedKeysStates[i] == InputHandler.KeyState.Clicked)
-                {
-                    this.Position = new Vector2(this.Position.X, this.Position.Y - 1);
-                    this.Jumped = true;
-                    this.jumpVelocity = DEFAULT_JUMP_INIT_VELOCITY;
-                }
-            }
-
-            if (this.Falling)
-            {
-                this.Acceleration = new Vector2(this.Acceleration.X, this.jumpVelocity);
-                this.jumpVelocity += GRAVITY;
-                this.PlayerAnimation.SpritesPositionY = 0;
-                this.PlayerAnimation.AmountOfFramesX = 10;
-                this.PlayerAnimation.ApplyChanges();
-            }
-            else
-            {
-                this.PlayerAnimation.SpritesPositionY = 136;
-                this.PlayerAnimation.AmountOfFramesX = 12;
-                this.PlayerAnimation.ApplyChanges();
             }
 
             this.Move(this.Acceleration);
